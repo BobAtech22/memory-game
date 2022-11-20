@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
   <link rel="stylesheet" href="styles.css">
 
@@ -15,12 +17,14 @@
   <main>
 
     <!-- Game setup start -->
-    <img class="logo"  src="assets/logo.svg" alt="logo">
+    <div class="logo_div">
+      <img class="logo"  src="assets/logo.svg" alt="logo">
+    </div>
     <div class="game_setup">
       <div class=" game_setup_inner">
 
-        <div class="select_div">
-          <h3>Select Theme</h3>
+        <div class="select_div theme_div">
+          <h3 class="select_h3">Select Theme</h3>
           <div class="btn_select_div">
             <button class="btn mid_btn dark_blue_btn" type="button" name="numbers">Numbers</button>
             <button class="btn mid_btn light_blue_btn" type="button" name="Icons">Icons</button>
@@ -28,7 +32,7 @@
         </div>
 
         <div class="select_div">
-          <h3>Number of Players</h3>
+          <h3 class="select_h3">Number of Players</h3>
           <div class="btn_select_div">
             <button class="btn small_btn dark_blue_btn" type="button" name="one">1</button>
             <button class="btn small_btn dark_blue_btn" type="button" name="two">2</button>
@@ -38,7 +42,7 @@
         </div>
 
         <div class="select_div">
-          <h3>Grid Size</h3>
+          <h3 class="select_h3">Grid Size</h3>
           <div class="btn_select_div">
             <button class="btn mid_btn dark_blue_btn" type="button" name="_4x4">4x4</button>
             <button class="btn mid_btn light_blue_btn" type="button" name="_6x6">6x6</button>

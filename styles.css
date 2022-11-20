@@ -1,11 +1,11 @@
 body{
-  font-family: "Atkinson Hyperlegible", sans-serif;
-
+  font-family: 'Atkinson Hyperlegible';
+  background-color: #152938;
 }
+
 /* main page*/
 main{
   align-items: center;
-  background-color: #152938;
   position: relative;
   max-width: 1440px;
   height: 1024px;
@@ -13,10 +13,13 @@ main{
 }
 
 /* Memory logo */
-.logo{
-  width: 
+.logo_div{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 154px;
 }
-
 /* white setup */
 .game_setup{
   width: 654px;
@@ -24,27 +27,27 @@ main{
   background-color: #FCFCFC;
   border-radius: 20px;
   margin: auto;
+  margin-top: 78px;
 }
 .game_setup_inner{
   width: 542px;
   height: 100%;
   margin: auto;
-
-
 }
 
 /* all H3 within game setup */
-.game_setup_inner h3{
+.game_setup_inner .select_h3{
   /* display: flex;
   flex-direction: column;
   justify-content: space-between; */
-font-style: normal;
-font-weight: 700;
-font-size: 20px;
-line-height: 25px;
-color: #7191A5;
-margin-top:33px;
-margin-bottom: 16px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 25px;
+  color: #7191A5;
+  margin-top:33px;
+  margin-bottom: 16px;
 }
 
 /* button select divs */
@@ -52,7 +55,9 @@ margin-bottom: 16px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+}
+.theme_div .select_h3{
+margin-top: 56px;
 }
 
 .btn_select_div{
@@ -66,7 +71,7 @@ margin-bottom: 16px;
 /* all buttons */
 .game_setup_inner .btn {
   border-style: none;
-  background: #6395B8;
+  background:#BCCED9;
   border-radius: 26px;
   height: 52px;
   font-style: normal;
@@ -75,6 +80,14 @@ margin-bottom: 16px;
   line-height: 32px;
   text-align: center;
   color: #FCFCFC;
+}
+.btn:hover{
+  background: #6395B8;
+  cursor: pointer;
+}
+.btn:active{
+  background: #304859;
+  cursor: pointer;
 }
 
 /* mid size buttons */
@@ -92,7 +105,17 @@ margin-bottom: 16px;
   border-style: none;
   width: 100%;
   height: 70px;
-  background: #FFB84A;
+  background: #FDA214;
   border-radius: 35px;
   margin-top: 33px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  text-align: center;
+  color: #FCFCFC;
+}
+.start_btn:hover{
+  background: #FFB84A;
+  cursor: pointer;
 }
