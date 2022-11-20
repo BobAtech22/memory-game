@@ -5,67 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
-  
+  <link rel="stylesheet" href="styles.css">
+
   <title>Frontend Mentor | Memory game</title>
 </head>
 <body>
 
-  <!-- Game setup start -->
 
-  Select Theme
-  Numbers
-  Icons
+  <main>
 
-  Number of Players
-  1
-  2
-  3
-  4
+    <!-- Game setup start -->
+    <img class="logo"  src="assets/logo.svg" alt="logo">
+    <div class="game_setup">
+      <div class=" game_setup_inner">
 
-  Grid Size
-  4x4
-  6x6
+        <div class="select_div">
+          <h3>Select Theme</h3>
+          <div class="btn_select_div">
+            <button class="btn mid_btn dark_blue_btn" type="button" name="numbers">Numbers</button>
+            <button class="btn mid_btn light_blue_btn" type="button" name="Icons">Icons</button>
+          </div>
+        </div>
 
-  Start Game
+        <div class="select_div">
+          <h3>Number of Players</h3>
+          <div class="btn_select_div">
+            <button class="btn small_btn dark_blue_btn" type="button" name="one">1</button>
+            <button class="btn small_btn dark_blue_btn" type="button" name="two">2</button>
+            <button class="btn small_btn light_blue_btn" type="button" name="three">3</button>
+            <button class="btn small_btn light_blue_btn" type="button" name="four">4</button>
+          </div>
+        </div>
 
-  <!-- Game setup end -->
+        <div class="select_div">
+          <h3>Grid Size</h3>
+          <div class="btn_select_div">
+            <button class="btn mid_btn dark_blue_btn" type="button" name="_4x4">4x4</button>
+            <button class="btn mid_btn light_blue_btn" type="button" name="_6x6">6x6</button>
+          </div>
+        </div>
 
-  <!-- Game board start -->
 
-  Restart
-  New Game
+        <button  class="start_btn" type="button" name="start">Start Game</button>
+        <!-- Game setup end -->
+      </div>
 
-  <!-- Multiplayer scores start -->
+    </div>
 
-  Player 1
-  <!-- P1 score -->
-  Current Turn
-
-  Player 2
-  <!-- P2 score -->
-  Current Turn
-
-  Player 3
-  <!-- P3 score -->
-  Current Turn
-
-  Player 4
-  <!-- P4 score -->
-  Current Turn
-
-  <!-- Multiplayer scores start -->
-
-  <!-- Solo game time and moves counter start -->
-
-  Time
-  <!-- Time elapsed -->
-
-  Moves
-  <!-- Moves total -->
-
-  <!-- Solo game time and moves counter end -->
-
-  <!-- Game board end -->
+  </main>
 
 
 </body>

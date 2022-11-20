@@ -1,0 +1,98 @@
+body{
+  font-family: "Atkinson Hyperlegible", sans-serif;
+
+}
+/* main page*/
+main{
+  align-items: center;
+  background-color: #152938;
+  position: relative;
+  max-width: 1440px;
+  height: 1024px;
+
+}
+
+/* Memory logo */
+.logo{
+  width: 
+}
+
+/* white setup */
+.game_setup{
+  width: 654px;
+  height: 559px;
+  background-color: #FCFCFC;
+  border-radius: 20px;
+  margin: auto;
+}
+.game_setup_inner{
+  width: 542px;
+  height: 100%;
+  margin: auto;
+
+
+}
+
+/* all H3 within game setup */
+.game_setup_inner h3{
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 25px;
+color: #7191A5;
+margin-top:33px;
+margin-bottom: 16px;
+}
+
+/* button select divs */
+.select_div{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
+.btn_select_div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+
+/* all buttons */
+.game_setup_inner .btn {
+  border-style: none;
+  background: #6395B8;
+  border-radius: 26px;
+  height: 52px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 32px;
+  text-align: center;
+  color: #FCFCFC;
+}
+
+/* mid size buttons */
+.mid_btn{
+  width: 256px;
+}
+
+/* small size buttons */
+.small_btn{
+  width: 119px;
+}
+
+/* start button */
+.start_btn{
+  border-style: none;
+  width: 100%;
+  height: 70px;
+  background: #FFB84A;
+  border-radius: 35px;
+  margin-top: 33px;
+}
