@@ -1,15 +1,68 @@
 body{
   font-family: 'Atkinson Hyperlegible';
-  background-color: #152938;
+  background-color:  #152938;
+  ;
 }
 
 /* main page*/
 main{
   align-items: center;
   position: relative;
-  max-width: 1440px;
-  height: 1024px;
 
+
+}
+.master{
+  display: flex;
+  flex-direction: column;
+  /* background-color: white; */
+  max-width: 1440px;
+ 
+  margin: auto;
+  align-items: center;
+  justify-content: space-between;
+
+
+}
+
+.top{
+  width: 77.08%;
+  height: 52px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 67px;
+}
+.main_l svg{
+  width: 150px;
+  height:28px;
+  fill: #152938;
+}
+
+.top div{
+  display: flex;
+  width: 292px;
+  /* background-color: #6395B8; */
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top_btn {
+  border-radius: 26px;
+  font-weight: 700;
+  font-size: 20px;
+  height: 52px;
+  border-width: 0px;
+}
+#restart{
+  width: 127px;
+  background-color: #FDA214;
+  color: #FCFCFC;
+}
+#new_game{
+  width: 149px;
+  background-color:#7191A5;
+  color: #152938;
 }
 
 /* Memory logo */
@@ -18,7 +71,7 @@ main{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 154px;
+  /* margin-top: 154px; */
 }
 /* white setup */
 .game_setup{
@@ -26,8 +79,9 @@ main{
   height: 559px;
   background-color: #FCFCFC;
   border-radius: 20px;
-  margin: auto;
+  /* margin: auto; */
   margin-top: 78px;
+ 
 }
 .game_setup_inner{
   width: 542px;
@@ -118,4 +172,35 @@ margin-top: 56px;
 .start_btn:hover{
   background: #FFB84A;
   cursor: pointer;
+}
+
+
+.player_div{
+  width: 1110px;
+  height: 130px;
+  /* background-color: #6395B8; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.ply_btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 255px;
+  height: 72px;
+  background: #DFE7EC;
+  border-radius: 10px;
+}
+.ply_btn h3{
+  font-weight: 700;
+  font-size: 32px;
+  color: #304859;
+}
+.ply_btn h4{
+  font-weight: 700;
+  font-size: 18px;
+  color: #7191A5;
 }
