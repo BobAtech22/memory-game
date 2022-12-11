@@ -128,7 +128,7 @@ margin-top: 56px;
 
 
 /* all buttons */
-.main_menu_inner .btn {
+.btn {
   border-style: none;
   background:#BCCED9;
   border-radius: 26px;
@@ -147,6 +147,10 @@ margin-top: 56px;
 .btn:active{
   background: #304859;
   cursor: pointer;
+}
+
+.btn_on{
+  background: #304859;
 }
 
 /* mid size buttons */
@@ -190,7 +194,6 @@ margin-top: 56px;
   flex-wrap: wrap;
   width: 532px;
   height: 532px;
-  background-color: antiquewhite;
   margin: 35px auto;
 }
 /* divs in 4x4 grid */
@@ -222,8 +225,7 @@ margin-top: 56px;
   flex-wrap: wrap;
   width: 572px;
   height: 572px;
-  background-color: antiquewhite;
-  margin: 400px auto;
+  margin: 35px auto;
 }
 
 .grid-item6{
@@ -245,7 +247,31 @@ margin-top: 56px;
   color:  #FCFCFC;
 }
 
+/* toggle off/on for toggle buttons */
 
+.btn_on{
+  background-color: #304859;
+  color: white;
+}
+.right{
+  background-color: #FDA214;
+}
+.wrong{
+  background-color: #BCCED9;
+}
+
+
+/* iocon style */
+.fa-solid{
+  color:#FCFCFC;
+}
+
+.icon6{
+  font-size: 40px;
+}
+.icon4{
+  font-size: 56px;
+}
 
 
 
