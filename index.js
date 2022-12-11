@@ -1,9 +1,16 @@
+
+$(".top").hide()
+$(".player_div").hide()
 // main menu setup of HTML content 
 function main_menu (){
     $(".top").hide()
     $(".player_div").hide()
+    $(".logo_div").show()
+    $("body").addClass("bg-color")
+    $(".grid").removeClass(`grid${opt}`)
+    $(".main_menu").show()
 }
-main_menu()
+
 
 // game 
 function game_page (name){
@@ -13,13 +20,18 @@ function game_page (name){
         $(".top").show()
         $(".player_div").show()
         $("body").removeClass("bg-color")
-    }else if(name="main_menu"){
-        $(".main_menu").show()
-        $(".logo_div").show()
-        $(".top").hide()
-        $(".player_div").hide()
     }
 }
+
+// click new game button
+$(".btn_new").click(()=>{
+    main_menu()
+    cnt = 0
+    opt = 0
+
+})
+
+
 
 // click start button
 let opt = 4
