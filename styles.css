@@ -1,7 +1,8 @@
 body{
   font-family: 'Atkinson Hyperlegible';
+}
+.bg-color{
   background-color:  #152938;
-  ;
 }
 
 /* main page*/
@@ -23,7 +24,7 @@ main{
 
 
 }
-
+/* hidden spot for "new-game" & "reset" buttons */
 .top{
   width: 77.08%;
   height: 52px;
@@ -32,12 +33,15 @@ main{
   align-items: center;
   margin-top: 67px;
 }
+
+    /* main logo in top div */
 .main_l svg{
   width: 150px;
   height:28px;
   fill: #152938;
 }
 
+    /* button container in top div */
 .top div{
   display: flex;
   width: 292px;
@@ -46,24 +50,24 @@ main{
   justify-content: space-between;
   align-items: center;
 }
-
-.top_btn {
+  .top_btn {
   border-radius: 26px;
   font-weight: 700;
   font-size: 20px;
   height: 52px;
   border-width: 0px;
-}
-#restart{
+  }
+  #restart{
   width: 127px;
   background-color: #FDA214;
   color: #FCFCFC;
-}
-#new_game{
+  }
+  #new_game{
   width: 149px;
   background-color:#7191A5;
   color: #152938;
-}
+  }
+
 
 /* Memory logo */
 .logo_div{
@@ -71,10 +75,11 @@ main{
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-top: 154px; */
+  margin-top: 154px;
+
 }
 /* white setup */
-.game_setup{
+.main_menu{
   width: 654px;
   height: 559px;
   background-color: #FCFCFC;
@@ -83,14 +88,14 @@ main{
   margin-top: 78px;
  
 }
-.game_setup_inner{
+.main_menu_inner{
   width: 542px;
   height: 100%;
   margin: auto;
 }
 
 /* all H3 within game setup */
-.game_setup_inner .select_h3{
+.main_menu_inner .select_h3{
   /* display: flex;
   flex-direction: column;
   justify-content: space-between; */
@@ -123,7 +128,7 @@ margin-top: 56px;
 
 
 /* all buttons */
-.game_setup_inner .btn {
+.main_menu_inner .btn {
   border-style: none;
   background:#BCCED9;
   border-radius: 26px;
@@ -175,6 +180,86 @@ margin-top: 56px;
 }
 
 
+
+
+/* For 4x4 option  */
+.grid4{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 532px;
+  height: 532px;
+  background-color: antiquewhite;
+  margin: 35px auto;
+}
+/* divs in 4x4 grid */
+.grid-item4{
+  display: flex;
+  justify-content: center;
+  width: 118px;
+  height: 118px;
+  background-color:#304859;
+  border-radius: 50%;
+  align-items: center;
+}
+/* text styles in 4x4 div */
+.cont4{
+  font-family: sans-serif;
+  text-align: center;
+  Font-style: Bold;
+  Font-size: 56px;
+  Line-height: 69px;
+  color:  #FCFCFC;
+}
+
+
+/* for 6x6 option */
+.grid6{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 572px;
+  height: 572px;
+  background-color: antiquewhite;
+  margin: 400px auto;
+}
+
+.grid-item6{
+  display: flex;
+  justify-content: center;
+  width: 82px;
+  height: 82px;
+  background-color:#304859;
+  border-radius: 50%;
+  align-items: center;
+}
+
+.cont6{
+  font-family: sans-serif;
+  text-align: center;
+  Font-style: Bold;
+  Font-size: 44px;
+  Line-height: 55px;
+  color:  #FCFCFC;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .player_div{
   width: 1110px;
   height: 130px;
@@ -204,3 +289,5 @@ margin-top: 56px;
   font-size: 18px;
   color: #7191A5;
 }
+
+
