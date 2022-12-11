@@ -11,13 +11,12 @@
 
   <title>Frontend Mentor | Memory game</title>
 </head>
-<body>
-
-
+<body class="bg-color">
   <main>
     <div class="master">
+      <!-- hidden spot for "new-game" & "reset" buttons -->
       <div class="top">
-        <!-- <img class="logo"  src="assets/logo.svg" alt="logo"> -->
+        
        <div class="main_l">
         <svg>
           <use href="#main_logo"></use>
@@ -28,14 +27,14 @@
           <button class="btn_restart top_btn" id="restart">Restart</button>
           <button  class="btn_new top_btn" id="new_game">New Game</button>
         </div>
-        
       </div>
+    <div class="grid"></div>  
           <!-- Game setup start -->
     <div class="logo_div">
       <img class="logo"  src="assets/logo.svg" alt="logo">
     </div>
-    <div class="game_setup">
-      <div class=" game_setup_inner">
+    <div class="main_menu">
+      <div class=" main_menu_inner">
         <!-- Select theme -->
         <div class="select_div theme_div">
           <h3 class="select_h3">Select Theme</h3>
@@ -93,7 +92,9 @@
   </div>
   </main>
 
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="index.js"></script>
+  <script src="https://kit.fontawesome.com/e7181e4259.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
