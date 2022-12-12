@@ -1,6 +1,6 @@
 let chosen = []
 $(".top").hide()
-$(".player_div").hide()
+$(".ply_cnt").hide()
 
 // --------------------- menu button Options -------------------
 // Select Theme
