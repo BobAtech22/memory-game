@@ -3,7 +3,7 @@ $(".top").hide()
 $(".ply_cnt").hide()
 
 // --------------------- menu button Options -------------------
-// Select Theme
+//--------------- Select Theme
 let cnt = 0;
 let item_tag;
 $(".btn_num").click(()=>{
@@ -21,7 +21,19 @@ $(".btn_icon").click(()=>{
 
 })
 
- // Grid size
+// ------------- Number of players
+let ply = 0
+for (let i = 1; i <= 4; i++){
+  $(`.ply_${i}`).click(()=>{
+    ply = i
+    $(".small_btn").removeClass("btn_on")
+    $(`.ply_${i}`).addClass("btn_on")
+  })
+}
+
+
+
+ //------------ Grid size
 let opt=0;
 $(".btn4").click(()=>{
     opt=4;
@@ -59,14 +71,12 @@ function main_menu (){
 
 
 // game play html layout for start button
-function game_page (name){
-    if(name="play"){
+function game_page (){
         $(".main_menu").hide()
         $(".logo_div").hide()
         $(".top").show()
         $(".player_div").show()
         $("body").removeClass("bg-color")
-    }
 }
 
 
@@ -75,16 +85,22 @@ function game_page (name){
 // click start button
 $(".start_btn").click(()=>{
     // press_start();
-    if (opt===0 || cnt ===0){
+    if (opt===0 || cnt ===0 || ply===0){
         // pass
     }else{
-        game_page("play");
+        // prepare game page
+        game_page();
+        // create grid based on size selected
         main_grid(opt);
         if (cnt === 1){
+            // generate number items
             content_num();
         } else{
+            // generate icon items
             content_icon();
         }
+        // generate score board
+        player_score_board()
     }
 })
 
@@ -210,3 +226,36 @@ function content_icon (){
     }, 2000)
 
 }
+
+
+//-------------------------------------- player_score_board
+function player_score_board(){
+    // individual score boards
+    $(".ply_cnt").show()
+      if (ply > 1){
+        for (let i=0; i < ply; i++ ){
+          $("<div>").addClass(`player_board b${i}`).appendTo($(".ply_cnt"))
+          $("<h3>").addClass("h3_title").text(`Player ${i+1}`).appendTo($(`.b${i}`))
+          $("<h4>").addClass("h4_score").text(`${0}`).appendTo($(`.b${i}`))
+        }
+      }else{
+        for (let i=0; i < 2; i++ ){
+          $("<div>").addClass(`player_board b${i}`).appendTo($(".ply_cnt"))
+        }
+        $("<h3>").addClass("h3_title").text(`Time`).appendTo($(`.b0`))
+        $("<h4>").addClass("h4_score").text(`1:59`).appendTo($(`.b0`))
+    
+        $("<h3>").addClass("h3_title").text(`Moves`).appendTo($(`.b1`))
+        $("<h4>").addClass("h4_score").text(`39`).appendTo($(`.b1`))
+      }
+        // score board container size
+        let container_size = $(".player_board").length
+        if (container_size === 2 && ply < 2){
+            $(".ply_cnt").removeClass("large_cont").addClass("small_cont2")
+        }else if (container_size === 2) {
+            $(".ply_cnt").removeClass("large_cont").addClass("small_cont")
+        }else if (container_size === 3) {
+            $(".ply_cnt").removeClass("large_cont").addClass("mid_cont")
+        }
+}
+    

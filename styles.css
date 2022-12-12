@@ -1,3 +1,4 @@
+/* -------------------------Background style */
 body{
   font-family: 'Atkinson Hyperlegible';
 }
@@ -5,7 +6,8 @@ body{
   background-color:  #152938;
 }
 
-/* main page*/
+
+/* -------------------------------------- main page */
 main{
   align-items: center;
   position: relative;
@@ -21,10 +23,10 @@ main{
   margin: auto;
   align-items: center;
   justify-content: space-between;
-
-
 }
-/* hidden spot for "new-game" & "reset" buttons */
+
+
+/* ---------------------------------------hidden spot for "new-game" & "reset" buttons */
 .top{
   width: 77.08%;
   height: 52px;
@@ -64,11 +66,13 @@ main{
   }
   #new_game{
   width: 149px;
-  background-color:#7191A5;
+  background-color: #DFE7EC;
+
   color: #152938;
   }
 
 
+  /* --------------------------------------------- */
 /* Memory logo */
 .logo_div{
   position: relative;
@@ -78,7 +82,7 @@ main{
   margin-top: 154px;
 
 }
-/* white setup */
+/*----------------------------------- Main menu  */
 .main_menu{
   width: 654px;
   height: 559px;
@@ -94,7 +98,7 @@ main{
   margin: auto;
 }
 
-/* all H3 within game setup */
+/* -------- all H3 within game setup */
 .main_menu_inner .select_h3{
   /* display: flex;
   flex-direction: column;
@@ -127,7 +131,7 @@ margin-top: 56px;
 
 
 
-/* all buttons */
+/*----------------- all buttons */
 .btn {
   border-style: none;
   background:#BCCED9;
@@ -247,7 +251,7 @@ margin-top: 56px;
   color:  #FCFCFC;
 }
 
-/* toggle off/on for toggle buttons */
+/*------------------- toggle off/on for toggle buttons */
 
 .btn_on{
   background-color: #304859;
@@ -261,7 +265,7 @@ margin-top: 56px;
 }
 
 
-/* iocon style */
+/*---------------------- iocon style for icon theme */
 .fa-solid{
   color:#FCFCFC;
 }
@@ -278,32 +282,33 @@ margin-top: 56px;
 /* -------------------------------------player score board */
 /* container size */
 .large_cont{
-  max-width: 1110px;
+  width: 1110px;
   height: 130px;
 }
 
 .mid_cont{
-  max-width: 825px;
+  width: 825px;
   height: 130px;
 }
 
 .small_cont{
-  max-width: 540px;
+  width: 540px;
   height: 130px;
 }
 .small_cont2{
-  max-width: 540px;
+  width: 540px;
   height: 72px;
 }
-
+/* main container style */
 .ply_cnt{
-  background-color: #6395B8;
+  /* background-color: #6395B8; */
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: auto;
   margin-bottom: 40px;
 }
+/* individual score-board style */
 .player_board{
   display: flex;
   flex-direction: row;
@@ -314,7 +319,7 @@ margin-top: 56px;
   background: #DFE7EC;
   border-radius: 10px;
 }
-
+/* score-board content style */
 .h4_score {
   font-weight: 700;
   font-size: 32px;
