@@ -1,10 +1,17 @@
+// ----------------------- initail variables
+//selected items
 let chosen = []
+// multiplayer score 
+let score = [0,0,0,0]
+//
+let player_index = 0
 $(".top").hide()
 $(".ply_cnt").hide()
 
 // --------------------- menu button Options -------------------
 //--------------- Select Theme
 let cnt = 0;
+
 let item_tag;
 $(".btn_num").click(()=>{
     cnt = 1
@@ -31,8 +38,6 @@ for (let i = 1; i <= 4; i++){
   })
 }
 
-
-
  //------------ Grid size
 let opt=0;
 $(".btn4").click(()=>{
@@ -54,12 +59,16 @@ $(".btn_new").click(()=>{
     document.location.reload()
 })
 
+// click restart
+$(".btn_restart").click(()=>{
+    clear_grid()
+})
 
 
 
 
 
-// main menu setup of HTML content 
+//-------------------------------------------- main menu setup of HTML content 
 function main_menu (){
     $(".top").hide()
     $(".player_div").hide()
@@ -105,22 +114,27 @@ $(".start_btn").click(()=>{
 })
 
 function main_grid (opt){
-    let main_div = $(".grid");
-    main_div = $(".grid").addClass(`grid${opt}`)
-
+    $(".grid").addClass(`grid${opt}`)
 //Generating a responsive grid and its events
+    grid_gen()
+}
+function grid_gen(){
     for(let i = 0; i < opt**2; i++ ){
-        $("<div></div>").addClass(`grid-item${opt} ${i}`).appendTo(main_div).click(()=>{
-            $(`div.grid > .${i}`).addClass("wrong")
+        $("<div></div>").addClass(`grid-item${opt} ${i}`).appendTo(".grid").click(()=>{
+            let item_div = $(`.grid > .${i}`)
+            if (item_div.hasClass("right") || item_div.hasClass("wrong") ){
+                //pass
+            }else{
+                $(`div.grid > .${i}`).addClass("wrong")
             let item = $(`div.grid > .${i} > ${item_tag}`)
             item.show()
             check_ans(item)
             console.log(chosen)
-
+            }
         });
-    };
-
+    }
 }
+
 
 
 // ------------------------- functions for checking 2 grid items
@@ -137,6 +151,9 @@ function icon_val (input){
 function equal(value){
     if (value[0] === value[1]){
         $(`.${value[1]}`).parent().removeClass("wrong").addClass("right")
+        // set new score
+        score[player_index]++;
+        $(`.b${player_index} > h4`).text(`${score[player_index]*5}`)
     }
 }
 
@@ -148,11 +165,22 @@ function check_ans(item){
         if (chosen.length === 2){
             equal(chosen)
             // console.log(chosen,chosen.length)
+            set_current_player()
             chosen.length = 0;
         }
     }
 }
-
+//Set Current Player
+function set_current_player(){
+    if (player_index < ply-1){
+      player_index++
+    }else{
+      player_index = 0;
+    }
+    $(`.player_board`).removeClass("current_player")
+    $(`.b${player_index}`).addClass("current_player")
+  }
+  
 
 
 // --------------------Generating Grid items
@@ -237,6 +265,8 @@ function player_score_board(){
           $("<div>").addClass(`player_board b${i}`).appendTo($(".ply_cnt"))
           $("<h3>").addClass("h3_title").text(`Player ${i+1}`).appendTo($(`.b${i}`))
           $("<h4>").addClass("h4_score").text(`${0}`).appendTo($(`.b${i}`))
+          //initial current player
+          $(`.b${player_index}`).addClass("current_player")
         }
       }else{
         for (let i=0; i < 2; i++ ){
@@ -258,4 +288,27 @@ function player_score_board(){
             $(".ply_cnt").removeClass("large_cont").addClass("mid_cont")
         }
 }
-    
+
+
+// -------------- -clear grid
+function clear_grid(){
+    chosen.length = 0;
+    // clear score
+    for (let i = 0; i < score.length; i++){
+      score[i]=0;
+    }
+    $(`.grid-item${opt}x${opt} > `).remove()
+    $(`.grid-item${opt}x${opt}`).removeClass("right wrong")
+    $(".ply_cnt > div").remove()
+    $(".grid > div").remove()
+    // remove number or icon items in grid
+    //Generate new set of number or icon items
+    grid_gen()
+    if(cnt === 1){
+      content_num()
+    }else if(cnt === 2){
+      content_icon()
+    }
+  
+    player_score_board()
+  }
