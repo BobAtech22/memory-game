@@ -275,27 +275,36 @@ margin-top: 56px;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-.player_div{
-  width: 1110px;
+/* -------------------------------------player score board */
+/* container size */
+.large_cont{
+  max-width: 1110px;
   height: 130px;
-  /* background-color: #6395B8; */
+}
+
+.mid_cont{
+  max-width: 825px;
+  height: 130px;
+}
+
+.small_cont{
+  max-width: 540px;
+  height: 130px;
+}
+.small_cont2{
+  max-width: 540px;
+  height: 72px;
+}
+
+.ply_cnt{
+  background-color: #6395B8;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: auto;
   margin-bottom: 40px;
 }
-.ply_btn{
+.player_board{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -305,15 +314,17 @@ margin-top: 56px;
   background: #DFE7EC;
   border-radius: 10px;
 }
-.ply_btn h3{
+
+.h4_score {
   font-weight: 700;
   font-size: 32px;
   color: #304859;
 }
-.ply_btn h4{
+.h3_title{
   font-weight: 700;
   font-size: 18px;
   color: #7191A5;
 }
+
 
 
