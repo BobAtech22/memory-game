@@ -150,7 +150,7 @@ margin-top: 56px;
 }
 .btn:active{
   background: #304859;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .btn_on{
@@ -250,6 +250,11 @@ margin-top: 56px;
   Line-height: 55px;
   color:  #FCFCFC;
 }
+.grid div:hover{
+  background: #6395B8;
+  cursor: pointer;
+}
+
 
 /*------------------- toggle off/on for toggle buttons */
 
@@ -321,6 +326,11 @@ margin-top: 56px;
 }
 /* score-board content style */
 .h4_score {
+  font-weight: 700;
+  font-size: 32px;
+  color: #304859;
+}
+.h4_p1 {
   font-weight: 700;
   font-size: 32px;
   color: #304859;

@@ -3,8 +3,15 @@
 let chosen = []
 // multiplayer score 
 let score = [0,0,0,0]
-//
+//index
 let player_index = 0
+//Moves
+let moves = 0
+//Time variables
+let sec = 0
+let min = 0
+
+
 $(".top").hide()
 $(".ply_cnt").hide()
 
@@ -54,14 +61,15 @@ $(".btn6").click(()=>{
 
 // click new game button
 $(".btn_new").click(()=>{
-    // main_menu()
-    // $(`.grid-item${opt}`).hide()
     document.location.reload()
 })
 
-// click restart
+// click restart button
 $(".btn_restart").click(()=>{
     clear_grid()
+    min = 0
+    sec = 0
+    clearInterval(myTime)
 })
 
 
@@ -110,26 +118,32 @@ $(".start_btn").click(()=>{
         }
         // generate score board
         player_score_board()
+        start_time()
     }
 })
 
+//Generating the grid
 function main_grid (opt){
     $(".grid").addClass(`grid${opt}`)
-//Generating a responsive grid and its events
+
     grid_gen()
 }
+
+//events on clicking grid items
 function grid_gen(){
     for(let i = 0; i < opt**2; i++ ){
         $("<div></div>").addClass(`grid-item${opt} ${i}`).appendTo(".grid").click(()=>{
             let item_div = $(`.grid > .${i}`)
-            if (item_div.hasClass("right") || item_div.hasClass("wrong") ){
+
+            if (item_div.hasClass("clicked") ){
                 //pass
             }else{
-                $(`div.grid > .${i}`).addClass("wrong")
+                $(`div.grid > .${i}`).addClass("wrong clicked")
             let item = $(`div.grid > .${i} > ${item_tag}`)
             item.show()
             check_ans(item)
             console.log(chosen)
+            click_move()
             }
         });
     }
@@ -153,7 +167,7 @@ function equal(value){
         $(`.${value[1]}`).parent().removeClass("wrong").addClass("right")
         // set new score
         score[player_index]++;
-        $(`.b${player_index} > h4`).text(`${score[player_index]*5}`)
+        $(`.b${player_index} > .h4_score`).text(`${score[player_index]*5}`)
     }
 }
 
@@ -165,7 +179,11 @@ function check_ans(item){
         if (chosen.length === 2){
             equal(chosen)
             // console.log(chosen,chosen.length)
-            set_current_player()
+            if(ply === 1){
+                // pass
+            }else{
+                set_current_player()
+            }
             chosen.length = 0;
         }
     }
@@ -273,10 +291,11 @@ function player_score_board(){
           $("<div>").addClass(`player_board b${i}`).appendTo($(".ply_cnt"))
         }
         $("<h3>").addClass("h3_title").text(`Time`).appendTo($(`.b0`))
-        $("<h4>").addClass("h4_score").text(`1:59`).appendTo($(`.b0`))
+        $("<h4>").addClass("h4_p1 time").text(`0:00`).appendTo($(`.b0`))
     
         $("<h3>").addClass("h3_title").text(`Moves`).appendTo($(`.b1`))
-        $("<h4>").addClass("h4_score").text(`39`).appendTo($(`.b1`))
+        $("<h4>").addClass("h4_p1 moves").text(`${moves}`).appendTo($(`.b1`))
+        
       }
         // score board container size
         let container_size = $(".player_board").length
@@ -290,25 +309,69 @@ function player_score_board(){
 }
 
 
+//------------------------- functions on player one timer
+function start_time(){
+    var myTime = setInterval(()=>{
+      time()
+    },1000)
+}
+// function start_time(){
+//     for(let i =moves;  i < opt**2; ){
+//         setTimeout(()=>{
+//             time()
+//         },1000)
+//     }
+// }
+function time(){
+    sec++;
+    if (sec === 60) {
+      min++
+      sec=0
+    }
+    time_sec = sec < 10 ? `0${sec}`: sec
+    $(".time").text(`${min}:${time_sec}`)
+}
+
+// function reset_time(){
+//     clearInterval(myTime)
+    
+// }
+
+// --------count move
+function click_move(){
+    ++moves
+    $(".moves").text(`${moves}`)
+    if(moves === opt**2 ){
+        alert("game_over")
+    }
+  }
+
+
+
+
 // -------------- -clear grid
 function clear_grid(){
     chosen.length = 0;
+    player_index = 0;
+    moves = 0;
     // clear score
     for (let i = 0; i < score.length; i++){
       score[i]=0;
     }
-    $(`.grid-item${opt}x${opt} > `).remove()
-    $(`.grid-item${opt}x${opt}`).removeClass("right wrong")
-    $(".ply_cnt > div").remove()
-    $(".grid > div").remove()
+    $(`.grid-item${opt} > `).remove();
+    $(`.grid-item${opt}`).removeClass("right wrong");
+    $(".ply_cnt > div").remove();
+    $(".grid > div").remove();
     // remove number or icon items in grid
     //Generate new set of number or icon items
     grid_gen()
     if(cnt === 1){
-      content_num()
+      content_num();
     }else if(cnt === 2){
-      content_icon()
+      content_icon();
     }
   
-    player_score_board()
+    player_score_board();
+    // $(`.player_board`).removeClass("current_player")
+    // $(`.b${player_index}`).addClass("current_player")
   }
