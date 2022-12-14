@@ -14,7 +14,7 @@ let min = 0
 
 $(".top").hide()
 $(".ply_cnt").hide()
-
+$(".results_dark").hide()
 // --------------------- menu button Options -------------------
 //--------------- Select Theme
 let cnt = 0;
@@ -63,13 +63,27 @@ $(".btn6").click(()=>{
 $(".btn_new").click(()=>{
     document.location.reload()
 })
+// game_over new_game button
+$(".results_new_game").click(()=>{
+    document.location.reload()
+})
+
+
 
 // click restart button
 $(".btn_restart").click(()=>{
     clear_grid()
     min = 0
     sec = 0
-    clearInterval(myTime)
+
+})
+// game_over restart button
+$(".results_restart").click(()=>{
+    clear_grid()
+    min = 0
+    sec = 0
+    $(".results_dark").hide()
+    $(".player_list > ").remove()
 })
 
 
@@ -342,7 +356,8 @@ function click_move(){
     ++moves
     $(".moves").text(`${moves}`)
     if(moves === opt**2 ){
-        alert("game_over")
+        $(".results_dark").show()
+        result_scores(score)
     }
   }
 
@@ -374,4 +389,54 @@ function clear_grid(){
     player_score_board();
     // $(`.player_board`).removeClass("current_player")
     // $(`.b${player_index}`).addClass("current_player")
+  }
+
+  //----------------------------- Functions for making result_scores
+// prints the winner
+function who_won(arr){
+    console.log(arr[0].score)
+    count = 1
+    for (let i = 1; i < arr.length; i++ ){
+      if (arr[0].score === arr[i].score){
+          $(".headn").text(`It's a tie!`)
+          count++
+          make_dark(count)
+      }
+    }
+    if(arr[0].score != arr[1].score) {
+        $(".headn").text(`Player ${arr[0].player} Wins!`)
+        make_dark(1)
+    }
+  }
+//paint top players score dark
+  function make_dark(num){
+    for(let i =0; i < num; i++){
+      $(`.r${i}`).addClass("top_player")
+      $(`.r${i} > `).addClass("top_ply_cnt")
+    }
+  }
+
+//Creating objects(players:scores) and arranging in desc.. order
+  function player_score_list(arr){
+    let temp =[]
+    for(let i =0; i < ply; i++){
+      temp.push({player : i+1, score: arr[i]})
+    }
+    let new_list = temp.sort((x,y)=>{return(y.score-x.score)})
+    return new_list
+  }
+
+//-------------------------------------  lunch Game over score 
+  function result_scores(arr){
+    let list = player_score_list(arr)
+
+    for (let i=0; i < list.length; i++){
+      let player_num = list[i].player
+      let score = list[i].score
+      $("<div>").addClass(`player_results r${i}`).appendTo($(".player_list"))
+      $("<p>").addClass("p_cnt player_results_p").text(`Player ${player_num}`).appendTo($(`.r${i}`))
+      $("<h2>").addClass("p_cnt player_results_h2").text(`${score} pairs`).appendTo($(`.r${i}`))
+    }
+
+    who_won(list)
   }
