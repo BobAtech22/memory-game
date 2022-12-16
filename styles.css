@@ -61,6 +61,10 @@ main{
   height: 52px;
   border-width: 0px;
   }
+  #menu{
+    display: none;
+    background-color: #FDA214;    
+  }
   #restart{
   width: 127px;
   background-color: #FDA214;
@@ -483,3 +487,230 @@ margin-top: 56px;
 .top_ply_cnt{
   color: #FCFCFC;
 }
+
+/*------------------------ Tablet mode -----------------------------------*/
+@media (max-width: 768px){
+
+  /* main height */
+    main{
+      height: 1024px;
+    }
+  
+  /*------------------ game play  */
+    .top{
+      width: 91.01%;
+    }
+  
+    /* grid */
+    .grid4{
+      margin-top: 157px;
+      margin-bottom: 116px;
+    }
+    
+    .grid6{
+      margin-top: 121px;
+      margin-bottom: 112px;
+    }
+    
+    /* score boards */
+    .ply_cnt{
+      width: 689px;
+    }
+    .player_board{
+      width: 164px;
+      height: 80px;
+    }
+    .player_board_2{
+      width: 225px;
+      height: 72px;
+    }
+    .mid_cont{
+      width: 525px;
+      height: 130px;
+    }
+    .small_cont{
+      width: 480px;
+      height: 72px;
+    }
+    .small_cont2{
+      width: 480px;
+      height: 72px;
+    }
+    .current_player::after{
+      display: none;
+    }
+  
+  } 
+    
+  /*------------------------ Mobile phone mode -----------------------------------*/
+  @media (max-width: 400px){
+    main{
+      height: 667px;
+    }
+  
+  
+  /* hide top restart & new_game buttons */
+  
+  
+    /*  logo*/
+    .logo{
+      width:122px ;
+    }
+    .logo_div{
+      margin-top: 80px;
+    }
+    .main_menu{
+      width: 327px;
+      height: 386px;
+      border-radius: 10px;
+    }
+  
+    .main_menu_inner .select_h3{
+      font-size: 15px;
+      line-height: 19px;
+      margin-top: 24px;
+      margin-bottom: 11px;
+    }
+  
+  
+    .btn{
+      height: 40px;
+      font-size: 26px;
+      font-size: 16px;
+      line-height: 20px;
+    }
+    .main_menu_inner{
+      width: 82.874%;
+    }
+    .mid_btn{
+      width: 47.232%;
+    }
+    .small_btn{
+      width: 21.95%;
+    }
+  
+    .start_btn{
+      width: 100%;
+      height: 40px;
+      font-size: 26px;
+      font-size: 16px;
+      line-height: 20px;
+      margin-top: 32px;
+    }
+  
+    /* ---------------------------- Game play view */
+  
+  /* hidden top div */
+    #restart{
+      display: none;
+    }
+    #new_game{
+      display: none;
+    }
+  
+    /* show menu button */
+    #menu{
+      display: inline-block;
+      background-color: #FDA214;
+      color: #FCFCFC;
+      width: 78px;
+      height: 40px;
+      border-radius: 26px;
+    }
+  .top{
+    width: 87.2%;
+  }
+  
+  /* main logo in top div */
+    .main_l svg{
+    width: 92px;
+    }
+  
+  .top div{
+    display: flex;
+    justify-content: end;
+  }
+  .top svg{
+    width: 92px;
+  }
+  
+   /* grid */
+   .grid4{
+    margin-top: 80px;
+    margin-bottom: 94px;
+    width: 327px;
+    height: 327px;
+  }
+  
+  .grid6{
+    margin-top: 80px;
+    margin-bottom: 94.12px;
+    width: 326.88px;
+    height: 326.88px;
+  }
+  .grid-item4{
+    width: 72.53px;
+    height: 72.53px;
+  }
+  .grid-item6{
+    width: 46.88px;
+    height: 46.88px;
+  }
+  .cont4{
+    font-size: 40px;
+    text-align: center;
+    line-height: 50px;
+  }
+  .cont6{
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+  }
+  .icon6{
+    font-size: 24px;
+  }
+  .icon4{
+    font-size: 40px;
+  }
+  /* score boards */
+  .ply_cnt{
+    width: 327px;
+    height: 78px;
+  }
+  .player_board{
+    width: 64px;
+    height: 70px;
+    border-radius: 5px;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  
+  
+  .player_board h4{
+    margin-top: 5px;
+    margin-bottom: 9px;
+  }
+  .player_board h3{
+    margin-top: 10px;
+    margin-bottom: 2px;
+  }
+  .player_board_2{
+    width: 151px;
+    height: 70px;
+  }
+  .mid_cont{
+    width: 240px;
+    height: 78px;
+  }
+  .small_cont{
+    width: 151px;
+    height: 78px;
+  }
+  .small_cont2{
+    width: 327px;
+    height: 70px;
+  }
+  
+  
+  
+  }
