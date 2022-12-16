@@ -10,7 +10,7 @@ let moves = 0
 //Time variables
 let sec = 0
 let min = 0
-
+let time_sec = sec < 10 ? `0${sec}`: sec
 
 $(".top").hide()
 $(".ply_cnt").hide()
@@ -315,6 +315,7 @@ function player_score_board(){
         let container_size = $(".player_board").length
         if (container_size === 2 && ply < 2){
             $(".ply_cnt").removeClass("large_cont").addClass("small_cont2")
+            $(".player_board").addClass("player_board_2");
         }else if (container_size === 2) {
             $(".ply_cnt").removeClass("large_cont").addClass("small_cont")
         }else if (container_size === 3) {
@@ -394,7 +395,12 @@ function clear_grid(){
   //----------------------------- Functions for making result_scores
 // prints the winner
 function who_won(arr){
-    console.log(arr[0].score)
+
+    if (ply ===1 ){
+      $(".headn").text(`You did it!`)
+      $(".sub_headn").text(`Game over! Here's how you got on...`)
+      return
+    }
     count = 1
     for (let i = 1; i < arr.length; i++ ){
       if (arr[0].score === arr[i].score){
@@ -429,7 +435,18 @@ function who_won(arr){
 //-------------------------------------  lunch Game over score 
   function result_scores(arr){
     let list = player_score_list(arr)
+    if (ply === 1){
+      $("<div>").addClass(`player_results r${1}`).appendTo($(".player_list"))
+      $("<div>").addClass(`player_results r${2}`).appendTo($(".player_list"))
 
+      $("<p>").addClass("p_cnt player_results_p").text(`Time Elapsed`).appendTo($(`.r${1}`))
+      $("<h2>").addClass("p_cnt player_results_h2").text(`${min}:${time_sec}`).appendTo($(`.r${1}`))
+
+      $("<p>").addClass("p_cnt player_results_p").text(`Moves Taken`).appendTo($(`.r${2}`))
+      $("<h2>").addClass("p_cnt player_results_h2").text(`${moves} Moves`).appendTo($(`.r${2}`))
+      who_won(list)
+      return
+    }
     for (let i=0; i < list.length; i++){
       let player_num = list[i].player
       let score = list[i].score
