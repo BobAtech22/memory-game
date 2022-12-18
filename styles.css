@@ -446,11 +446,15 @@ margin-top: 56px;
 }
 .results_btn:hover{
   cursor: pointer;
+  background-color: #6395B8;
 }
 
 .results_restart{
   color: #FCFCFC;
   background: #FDA214;
+}
+.results_restart:hover{
+  background: #FFB84A;
 }
 .results_new_game{
   color: #152938;
