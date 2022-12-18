@@ -551,7 +551,7 @@ margin-top: 56px;
   } 
     
   /*------------------------ Mobile phone mode -----------------------------------*/
-  @media (max-width: 400px){
+  @media (max-width: 420px){
     main{
       height: 667px;
     }
