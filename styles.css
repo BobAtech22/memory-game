@@ -1,4 +1,12 @@
 /* -------------------------Background style */
+.no_click{
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color: rgba(0, 0, 0,0);
+}
 body{
   font-family: 'Atkinson Hyperlegible';
   font-weight: 700;
@@ -39,14 +47,14 @@ main{
 }
 
     /* main logo in top div */
-.main_l svg{
-  width: 150px;
-  height:28px;
-  fill: #152938;
+#memory_logo{
+  font-size: 40px;
+  line-height: 50px;
+  color: #152938;
 }
 
     /* button container in top div */
-.top div{
+.top_btn_div{
   display: flex;
   width: 292px;
   /* background-color: #6395B8; */
@@ -529,7 +537,7 @@ margin-top: 56px;
       height: 130px;
     }
     .small_cont{
-      width: 480px;
+      width: 339px;
       height: 72px;
     }
     .small_cont2{
@@ -622,18 +630,18 @@ margin-top: 56px;
   }
   
   /* main logo in top div */
-    .main_l svg{
-    width: 92px;
+    .main_l{
+      display: flex;
+      justify-content: left;
     }
-  
-  .top div{
+    #memory_logo{
+      font-size: 24px;
+      line-height: 30px;
+    }
+  .top_btn_div{
     display: flex;
-    justify-content: end;
+    justify-content:end;
   }
-  .top svg{
-    width: 92px;
-  }
-  
    /* grid */
    .grid4{
     margin-top: 80px;
@@ -687,12 +695,15 @@ margin-top: 56px;
   
   
   .player_board h4{
-    margin-top: 5px;
-    margin-bottom: 9px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 24px;
+    
   }
   .player_board h3{
-    margin-top: 10px;
-    margin-bottom: 2px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 15px;
   }
   .player_board_2{
     width: 151px;
@@ -710,7 +721,94 @@ margin-top: 56px;
     width: 327px;
     height: 70px;
   }
+
+
+  .results_cont{
+ 
+    border-radius: 10px;
+    width: 327px;
+
+  }
   
+  .headn{
+    font-size: 24px;
+    line-height: 30px;
+    margin: 32px 0px 0px 0px ;
+  }
   
+  .sub_headn{
+    font-size: 14px;
+    line-height: 17px;
+    margin: 9px 0px 24px 0px ;
+  }
+  
+   .results_btn_cont{
+    width: 279px;
+    height: 112px;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0px 0px 24px 0px ;
   
   }
+  
+  .results_btn {
+    width: 279px;
+    height: 48px;
+    border-radius: 26px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .player_list{
+    width: 279px;
+    margin-bottom: 24px;
+  }
+
+  
+  .player_results{
+    width: 100%;
+    height: 48px;
+    border-radius: 10px;
+    background-color: #DFE7EC;
+  
+  }
+  .player_results_h2{
+    font-size: 20px;
+    line-height: 25px;
+    color: #304859;
+    margin: 0px 32px;
+  }
+  .player_results_p{
+    font-size: 13px;
+    line-height: 16px;
+    color: #7191A5;
+    margin: 0px 32px;
+  } 
+  
+  #pause_cont{
+    width: 327px;
+    height: 224px;
+    align-items: center;
+    text-align: center;
+  }
+  .pause_btn_cnt{
+    width: 279px ;
+    height: 176px;
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  #resume_btn{
+    background-color: #DFE7EC;
+  }
+  .pause{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+

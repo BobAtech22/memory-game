@@ -11,10 +11,12 @@ let moves = 0
 let sec = 0
 let min = 0
 let time_sec = sec < 10 ? `0${sec}`: sec
-
+let screen_width = screen.width;
 $(".top").hide()
 $(".ply_cnt").hide()
 $(".results_dark").hide()
+$(".pause").hide()
+$(".no_click").hide()
 // --------------------- menu button Options -------------------
 //--------------- Select Theme
 let cnt = 0;
@@ -84,10 +86,21 @@ $(".results_restart").click(()=>{
     sec = 0
     $(".results_dark").hide()
     $(".player_list > ").remove()
+    $(".pause").hide()
+    
 })
 
+//Resume button
+$(".resume").click(()=> { 
+  $(".pause").hide()
+  start_time()
+});
 
-
+// phone menu button
+$("#menu").click(()=>{
+  pause()
+  clearInterval(myTime)
+})
 
 
 //-------------------------------------------- main menu setup of HTML content 
@@ -133,6 +146,7 @@ $(".start_btn").click(()=>{
         // generate score board
         player_score_board()
         start_time()
+      
     }
 })
 
@@ -261,12 +275,14 @@ function content_num (){
         $(`<h1>${num}</h1>`).addClass(`cont${opt} num_${num}`).appendTo($(`div.grid > .${i}`))
 
     }
-
+    $(".no_click").show()
     setTimeout(()=>{
+      
         for(let i = 0; i < opt**2; i++ ){
             $(`div.grid > .${i} > h1`).hide()
         }
-    }, 2000)
+        $(".no_click").hide()
+    }, 3000)
 
 }
 
@@ -278,12 +294,13 @@ function content_icon (){
        let num = list[i]
         $(icons[num]).addClass(`icon${opt}`).appendTo($(`div.grid > .${i}`))
     }
-
+    $(".no_click").show()
     setTimeout(()=>{
         for(let i = 0; i < opt**2; i++ ){
             $(`div.grid > .${i} > i`).hide()
         }
-    }, 2000)
+        $(".no_click").hide()
+    }, 3000)
 
 }
 
@@ -295,10 +312,16 @@ function player_score_board(){
       if (ply > 1){
         for (let i=0; i < ply; i++ ){
           $("<div>").addClass(`player_board b${i}`).appendTo($(".ply_cnt"))
-          $("<h3>").addClass("h3_title").text(`Player ${i+1}`).appendTo($(`.b${i}`))
+          
+          if (screen_width < 400){  
+            $("<h3>").addClass("h3_title ").text(`P${i+1}`).appendTo($(`.b${i}`));
+          }else{
+            $("<h3>").addClass("h3_title").text(`Player ${i+1}`).appendTo($(`.b${i}`))
+          }
           $("<h4>").addClass("h4_score").text(`${0}`).appendTo($(`.b${i}`))
           //initial current player
           $(`.b${player_index}`).addClass("current_player")
+          console.log(screen_width)
         }
       }else{
         for (let i=0; i < 2; i++ ){
@@ -325,18 +348,16 @@ function player_score_board(){
 
 
 //------------------------- functions on player one timer
+
+let myTime = setInterval(()=>{
+    time()
+  },1000)
+clearInterval(myTime)
 function start_time(){
-    var myTime = setInterval(()=>{
-      time()
-    },1000)
+  myTime = setInterval(()=>{
+    time()
+  },1000)
 }
-// function start_time(){
-//     for(let i =moves;  i < opt**2; ){
-//         setTimeout(()=>{
-//             time()
-//         },1000)
-//     }
-// }
 function time(){
     sec++;
     if (sec === 60) {
@@ -432,7 +453,7 @@ function who_won(arr){
     return new_list
   }
 
-//-------------------------------------  lunch Game over score 
+//-------------------------------------  lunch Game over score
   function result_scores(arr){
     let list = player_score_list(arr)
     if (ply === 1){
@@ -457,3 +478,10 @@ function who_won(arr){
 
     who_won(list)
   }
+
+  // phone pause menu
+function pause(){
+  $(".pause").show()
+}
+
+
