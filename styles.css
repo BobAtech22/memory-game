@@ -782,6 +782,7 @@ margin-top: 56px;
     color: #304859;
     margin: 0px ;
     margin-right: 16px;
+    margin-left: 16px;
   }
   .player_results_p{
     font-size: 13px;
@@ -789,7 +790,15 @@ margin-top: 56px;
     color: #7191A5;
     margin: 0px ;
     margin-right: 16px;
+    margin-left: 16px;
   } 
+
+  .top_player{
+    background-color: #152938;
+  }
+  .top_ply_cnt{
+    color: #FCFCFC;
+  }
   
   #pause_cont{
     width: 327px;
