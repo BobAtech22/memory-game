@@ -780,13 +780,15 @@ margin-top: 56px;
     font-size: 20px;
     line-height: 25px;
     color: #304859;
-    margin: 0px 32px;
+    margin: 0px ;
+    margin-right: 16px;
   }
   .player_results_p{
     font-size: 13px;
     line-height: 16px;
     color: #7191A5;
-    margin: 0px 32px;
+    margin: 0px ;
+    margin-right: 16px;
   } 
   
   #pause_cont{
