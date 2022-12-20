@@ -1,12 +1,15 @@
 // ----------------------- initail variables
 //selected items
 let chosen = []
-// multiplayer score 
+let chosen_item =[]
+// multiplayer score
 let score = [0,0,0,0]
 //index
 let player_index = 0
 //Moves
 let moves = 0
+// correct moves
+correct_pick=0
 //Time variables
 let sec = 0
 let min = 0
@@ -17,6 +20,7 @@ $(".ply_cnt").hide()
 $(".results_dark").hide()
 $(".pause").hide()
 $(".no_click").hide()
+
 // --------------------- menu button Options -------------------
 //--------------- Select Theme
 let cnt = 0;
@@ -75,8 +79,10 @@ $(".results_new_game").click(()=>{
 // click restart button
 $(".btn_restart").click(()=>{
     clear_grid()
+    clearInterval(myTime)
     min = 0
     sec = 0
+    start_time()
 
 })
 // game_over restart button
@@ -87,11 +93,12 @@ $(".results_restart").click(()=>{
     $(".results_dark").hide()
     $(".player_list > ").remove()
     $(".pause").hide()
-    
+    start_time()
+
 })
 
 //Resume button
-$(".resume").click(()=> { 
+$(".resume").click(()=> {
   $(".pause").hide()
   start_time()
 });
@@ -103,7 +110,7 @@ $("#menu").click(()=>{
 })
 
 
-//-------------------------------------------- main menu setup of HTML content 
+//-------------------------------------------- main menu setup of HTML content
 function main_menu (){
     $(".top").hide()
     $(".player_div").hide()
@@ -146,7 +153,7 @@ $(".start_btn").click(()=>{
         // generate score board
         player_score_board()
         start_time()
-      
+
     }
 })
 
@@ -166,12 +173,15 @@ function grid_gen(){
             if (item_div.hasClass("clicked") ){
                 //pass
             }else{
-                $(`div.grid > .${i}`).addClass("wrong clicked")
+                $(`div.grid > .${i}`).addClass("right clicked")
             let item = $(`div.grid > .${i} > ${item_tag}`)
             item.show()
+            chose_item(item)
             check_ans(item)
-            console.log(chosen)
-            click_move()
+            console.log(correct_pick,chose_item)
+            // click_move()
+
+
             }
         });
     }
@@ -188,15 +198,59 @@ function icon_val (input){
     return (class_list[1])
 }
 
-// function for compering the class names of 
+function chose_item(item_div){
+  if (chosen_item.length < 2 ){
+    chosen_item.push(item_div)
+  }else{
+    chosen_item.length = 0;
+    chosen_item.push(item_div)
+  }
+  
+}
+
+function check_item(status){
+  if (status === 'good'){
+    // correct_pick +=2
+    chosen_item[0].parent().removeClass('right').addClass('wrong')
+    chosen_item[1].parent().removeClass('right').addClass('wrong')
+  }
+  if (status === 'bad'){
+    chosen_item[0].hide()
+    chosen_item[1].hide()
+    chosen_item[0].parent().removeClass('wrong')
+    chosen_item[1].parent().removeClass('wrong')
+    // chosen_item[1].parent().removeClass('right clicked')
+  }
+
+}
+
+function game_over(){
+  if (correct_pick === opt**2 ){
+    $(".results_dark").show()
+    result_scores(score)
+    clearInterval(myTime)
+  }
+}
+
+// function for compering the class names of
 // the 2 chosen item & reacting if equal or not
 function equal(value){
     if (value[0] === value[1]){
-        $(`.${value[1]}`).parent().removeClass("wrong").addClass("right")
+        correct_pick +=2
+        // $(`.${value[1]}`).parent().removeClass("wrong").addClass("right")
+        setTimeout(()=>{
+          check_item('good')},1000)
         // set new score
         score[player_index]++;
         $(`.b${player_index} > .h4_score`).text(`${score[player_index]*5}`)
+    }else{
+      chosen_item[0].parent().removeClass('right clicked').addClass('wrong')
+      chosen_item[1].parent().removeClass('right clicked').addClass('wrong')
+      setTimeout(()=>{
+        check_item('bad')},1000)
+      // $(`.${value[1]}`).parent().removeClass("right").addClass("wrong")
     }
+    
 }
 
 // function check for the number of elements in array chosen
@@ -213,8 +267,11 @@ function check_ans(item){
                 set_current_player()
             }
             chosen.length = 0;
+            click_move()
+
         }
     }
+
 }
 //Set Current Player
 function set_current_player(){
@@ -226,7 +283,7 @@ function set_current_player(){
     $(`.player_board`).removeClass("current_player")
     $(`.b${player_index}`).addClass("current_player")
   }
-  
+
 
 
 // --------------------Generating Grid items
@@ -277,7 +334,7 @@ function content_num (){
     }
     $(".no_click").show()
     setTimeout(()=>{
-      
+
         for(let i = 0; i < opt**2; i++ ){
             $(`div.grid > .${i} > h1`).hide()
         }
@@ -312,8 +369,8 @@ function player_score_board(){
       if (ply > 1){
         for (let i=0; i < ply; i++ ){
           $("<div>").addClass(`player_board b${i}`).appendTo($(".ply_cnt"))
-          
-          if (screen_width < 400){  
+
+          if (screen_width < 400){
             $("<h3>").addClass("h3_title ").text(`P${i+1}`).appendTo($(`.b${i}`));
           }else{
             $("<h3>").addClass("h3_title").text(`Player ${i+1}`).appendTo($(`.b${i}`))
@@ -329,10 +386,10 @@ function player_score_board(){
         }
         $("<h3>").addClass("h3_title").text(`Time`).appendTo($(`.b0`))
         $("<h4>").addClass("h4_p1 time").text(`0:00`).appendTo($(`.b0`))
-    
+
         $("<h3>").addClass("h3_title").text(`Moves`).appendTo($(`.b1`))
         $("<h4>").addClass("h4_p1 moves").text(`${moves}`).appendTo($(`.b1`))
-        
+
       }
         // score board container size
         let container_size = $(".player_board").length
@@ -370,17 +427,14 @@ function time(){
 
 // function reset_time(){
 //     clearInterval(myTime)
-    
+
 // }
 
 // --------count move
 function click_move(){
     ++moves
     $(".moves").text(`${moves}`)
-    if(moves === opt**2 ){
-        $(".results_dark").show()
-        result_scores(score)
-    }
+    game_over()
   }
 
 
@@ -389,8 +443,10 @@ function click_move(){
 // -------------- -clear grid
 function clear_grid(){
     chosen.length = 0;
+    chosen_item.length =0;
     player_index = 0;
     moves = 0;
+    correct_pick=0;
     // clear score
     for (let i = 0; i < score.length; i++){
       score[i]=0;
@@ -407,7 +463,7 @@ function clear_grid(){
     }else if(cnt === 2){
       content_icon();
     }
-  
+
     player_score_board();
     // $(`.player_board`).removeClass("current_player")
     // $(`.b${player_index}`).addClass("current_player")
@@ -477,11 +533,10 @@ function who_won(arr){
     }
 
     who_won(list)
+ 
   }
 
   // phone pause menu
 function pause(){
   $(".pause").show()
 }
-
-
